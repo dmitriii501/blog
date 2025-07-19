@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель — Мини-блог</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Админ-панель</h1>
+            <a href="{{ url_for('logout') }}" class="btn">Выйти</a>
+            <a href="{{ url_for('index') }}" class="btn">На главную</a>
+        </div>
+    </header>
+    <main class="container">
+        <a href="{{ url_for('new_post') }}" class="btn">+ Новый пост</a>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <h2>Посты</h2>
+        {% for post in posts %}
+        <div class="post-card">
+            <h3>{{ post.title }}</h3>
+            <div class="post-meta">{{ post.created_at.strftime('%d.%m.%Y %H:%M') }}</div>
+            <form method="post" action="{{ url_for('delete_post', post_id=post.id) }}" style="display:inline;">
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Удалить пост?')">Удалить</button>
+            </form>
+            <a href="{{ url_for('post_detail', post_id=post.id) }}" class="btn">Открыть</a>
+        </div>
+        {% else %}
+        <p>Постов нет.</p>
+        {% endfor %}
+    </main>
+</body>
+</html> 

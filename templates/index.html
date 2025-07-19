@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мини-блог</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Мини-блог</h1>
+            <a href="{{ url_for('login') }}" class="btn admin-btn">Вход для администратора</a>
+        </div>
+    </header>
+    <main class="container">
+        {% for post in posts %}
+        <div class="post-card">
+            <h2><a href="{{ url_for('post_detail', post_id=post.id) }}">{{ post.title }}</a></h2>
+            <div class="post-meta">Автор: {{ post.author.username if post.author else 'admin' }} | {{ post.created_at.strftime('%d.%m.%Y %H:%M') }}</div>
+            <div class="post-content">{{ post.content[:300] }}{% if post.content|length > 300 %}...{% endif %}</div>
+            <div class="reactions" data-post-id="{{ post.id }}">
+                <button class="react-btn" data-reaction="like">👍 <span>{{ post.like_count }}</span></button>
+                <button class="react-btn" data-reaction="fire">🔥 <span>{{ post.fire_count }}</span></button>
+                <button class="react-btn" data-reaction="laugh">😂 <span>{{ post.laugh_count }}</span></button>
+                <a href="{{ url_for('post_detail', post_id=post.id) }}" class="read-more">Читать полностью</a>
+            </div>
+        </div>
+        {% else %}
+        <p>Постов пока нет.</p>
+        {% endfor %}
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 

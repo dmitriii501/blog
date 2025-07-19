@@ -1,0 +1,201 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f8fafd;
+    color: #222;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+header {
+    background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+    padding: 30px 0 10px 0;
+    margin-bottom: 30px;
+}
+header h1 {
+    margin: 0 0 10px 0;
+    color: #2d6cdf;
+    font-size: 2.2rem;
+}
+.btn {
+    background: #2d6cdf;
+    color: #fff;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(45,108,223,0.08);
+    display: inline-block;
+}
+.btn:hover {
+    background: #1b4e9b;
+    transform: translateY(-2px) scale(1.03);
+}
+.btn-danger {
+    background: #e74c3c;
+}
+.btn-danger:hover {
+    background: #c0392b;
+}
+.admin-btn {
+    float: right;
+    margin-top: -40px;
+}
+.post-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 24px 28px;
+    margin-bottom: 32px;
+}
+.post-card h2, .post-card h3, .post-card h1 {
+    margin-top: 0;
+    color: #2d6cdf;
+}
+.post-meta {
+    color: #888;
+    font-size: 0.95em;
+    margin-bottom: 10px;
+}
+.post-content {
+    margin-bottom: 18px;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+.reactions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.react-btn {
+    background: #f4f8ff;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 6px 18px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.react-btn:hover {
+    background: #e0eafc;
+    border: 1px solid #2d6cdf;
+}
+.read-more {
+    margin-left: auto;
+    color: #2d6cdf;
+    text-decoration: underline;
+    font-size: 1em;
+}
+.comments-section {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 24px 28px;
+    margin-top: 32px;
+}
+.comments-section h2 {
+    margin-top: 0;
+    color: #2d6cdf;
+}
+.comment {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+}
+.comment:last-child {
+    border-bottom: none;
+}
+.comment-author {
+    font-weight: bold;
+    color: #2d6cdf;
+}
+.comment-content {
+    margin: 4px 0 2px 0;
+}
+.comment-date {
+    color: #888;
+    font-size: 0.9em;
+}
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 18px;
+}
+.comment-form input, .comment-form textarea, .login-form input, .new-post-form input, .new-post-form textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    font-size: 1em;
+}
+.comment-form button, .login-form button, .new-post-form button {
+    background: #2d6cdf;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 0;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.comment-form button:hover, .login-form button:hover, .new-post-form button:hover {
+    background: #1b4e9b;
+}
+.flashes {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 16px;
+}
+.flashes .success {
+    color: #27ae60;
+    font-weight: bold;
+}
+.flashes .error {
+    color: #e74c3c;
+    font-weight: bold;
+}
+.login-box {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 32px 28px;
+    max-width: 400px;
+    margin: 60px auto 0 auto;
+}
+.login-box h1 {
+    color: #2d6cdf;
+    margin-top: 0;
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.back-link {
+    margin-top: 18px;
+    text-align: center;
+}
+.new-post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+@media (max-width: 600px) {
+    .container {
+        padding: 0 4px;
+    }
+    .post-card, .comments-section, .login-box {
+        padding: 12px 6px;
+    }
+} 

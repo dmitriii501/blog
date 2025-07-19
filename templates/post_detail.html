@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }} — Мини-блог</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{{ url_for('index') }}" class="btn">← На главную</a>
+        </div>
+    </header>
+    <main class="container">
+        <div class="post-card">
+            <h1>{{ post.title }}</h1>
+            <div class="post-meta">Автор: {{ post.author.username if post.author else 'admin' }} | {{ post.created_at.strftime('%d.%m.%Y %H:%M') }}</div>
+            <div class="post-content">{{ post.content }}</div>
+            <div class="reactions" data-post-id="{{ post.id }}">
+                <button class="react-btn" data-reaction="like">👍 <span>{{ post.like_count }}</span></button>
+                <button class="react-btn" data-reaction="fire">🔥 <span>{{ post.fire_count }}</span></button>
+                <button class="react-btn" data-reaction="laugh">😂 <span>{{ post.laugh_count }}</span></button>
+            </div>
+        </div>
+        <section class="comments-section">
+            <h2>Комментарии</h2>
+            {% for comment in post.comments %}
+            <div class="comment">
+                <div class="comment-author">{{ comment.author }}</div>
+                <div class="comment-content">{{ comment.content }}</div>
+                <div class="comment-date">{{ comment.created_at.strftime('%d.%m.%Y %H:%M') }}</div>
+            </div>
+            {% else %}
+            <p>Комментариев пока нет.</p>
+            {% endfor %}
+            <form method="post" class="comment-form">
+                <input type="text" name="author" placeholder="Ваше имя (необязательно)">
+                <textarea name="content" placeholder="Ваш комментарий" required></textarea>
+                <button type="submit">Добавить комментарий</button>
+            </form>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 
